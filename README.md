@@ -47,12 +47,12 @@ userNew.save((err, user) => {
 });
 
 
-let userNew = new User();
+let userNew2 = new User();
 
-userNew.nome = 'Joao';
-userNew.idade = 37;
-userNew.endereco = {rua: '84C', numero:'93', bairro:'Centro' };
-userNew.save((err, user) => {
+userNew2.nome = 'Joao';
+userNew2.idade = 37;
+userNew2.endereco = {rua: '84C', numero:'93', bairro:'Centro' };
+userNew2.save((err, user) => {
     console.log(user);
 });
 ```
