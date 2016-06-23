@@ -42,7 +42,7 @@ let userNew = new User();
 
 userNew.nome = 'Pedro';
 userNew.idade = 23;
-userNew.save(function(err, user){
+userNew.save((err, user) => {
     console.log(user);
 });
 
@@ -52,7 +52,7 @@ let userNew = new User();
 userNew.nome = 'Joao';
 userNew.idade = 37;
 userNew.endereco = {rua: '84C', numero:'93', bairro:'Centro' };
-userNew.save(function(err, user){
+userNew.save((err, user) => {
     console.log(user);
 });
 ```
@@ -62,7 +62,7 @@ Bom, agora nós vamos apresentar os usuarios já cadastrados
 ```javascript
 
 User.find(function(err, users){
-    users.forEach(function(usuario){
+    users.forEach(usuario => {
         console.log(usuario.nome);
     });
 });
@@ -72,8 +72,8 @@ Certo, mas e o que acontece se você tentar acessar o endereco? Mostrará undefi
 
 ```javascript
 
-User.find(function(err, users){
-	users.forEach(function( { nome, idade, endereco = { rua : '', numero : '', bairro : '' } } ){
+User.find((err, users) =>{
+	users.forEach(( { nome, idade, endereco = { rua : '', numero : '', bairro : '' } } ) =>{
 		console.log(endereco.rua);
 	});
 });
