@@ -42,7 +42,6 @@ let userNew = new User();
 
 userNew.nome = 'Pedro';
 userNew.idade = 23;
-userNew.endereco = {rua: '34C', numero:'273', bairro:'Centro' };
 userNew.save(function(err, user){
     console.log(user);
 });
