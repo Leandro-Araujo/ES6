@@ -18,7 +18,7 @@ db.once('open', function() {
 Mongoose.connect('mongodb://localhost/testefine');
 ```
 
-Feito isso, vamos criar um Schema chamado 'UserSchema' para servir como modelo base para a collectiona 'User':
+Feito isso, vamos criar um Schema chamado 'UserSchema' para servir como modelo base para a collection 'User':
 
 ```javascript
 const EnderecoPessoaSchema = new Mongoose.Schema({
@@ -33,7 +33,7 @@ const PessoaSchema = new Mongoose.Schema({
     endereco: EnderecoPessoaSchema
 });
 
-const User = Mongoose.model('Site', PessoaSchema);
+const User = Mongoose.model('User', PessoaSchema);
 ```
 Criamos também o nosso model, bom agora vamos criar quantos usuario no banco de dados forem necessários:
 
@@ -56,4 +56,27 @@ userNew.endereco = {rua: '84C', numero:'93', bairro:'Centro' };
 userNew.save(function(err, user){
     console.log(user);
 });
+```
+
+Bom, agora nós vamos apresentar os usuarios já cadastrados
+
+```javascript
+
+User.find(function(err, users){
+    users.forEach(function(usuario){
+        console.log(usuario.nome);
+    });
+});
+```
+
+Certo, mas e o que acontece se você tentar acessar o endereco? Mostrará undefined, certo? E pior se você tentar acessa a rua o programa lançará uma excessão, então, como resolver isso?
+
+```javascript
+
+User.find(function(err, users){
+	users.forEach(function( { nome, idade, endereco = { rua : '', numero : '', bairro : '' } } ){
+		console.log(endereco.rua);
+	});
+});
+
 ```
